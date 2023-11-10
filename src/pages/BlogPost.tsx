@@ -15,7 +15,7 @@ export type Props = {
   slug: string;
   title: string;
   description: string;
-  heroImage: string;
+  hero_image: string;
   blocks: Block[];
 };
 
@@ -104,7 +104,7 @@ export function BlogPost(props: Props) {
       <section>
         <h1>{props.title}</h1>
         <p>{props.description}</p>
-        <img src={props.heroImage} />
+        <img src={props.hero_image} />
       </section>
 
       <div>
