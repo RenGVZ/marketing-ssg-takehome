@@ -1,0 +1,22 @@
+{
+  "extends": "@tablecheck/scripts/tsconfig/base.json",
+  "exclude": ["node_modules"],
+  "files": [
+    "/Users/gavinrene/Code/marketing-ssg-takehome/.@tablecheck/definitions.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/*.ts",
+    "src/*.tsx",
+    "src/**/*.json",
+    "src/*.json"
+  ],
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "target": "es5",
+    "baseUrl": "src",
+    "noEmit": true
+  }
+}

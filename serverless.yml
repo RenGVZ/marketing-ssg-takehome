@@ -1,0 +1,40 @@
+service: ssg-poc
+frameworkVersion: "2"
+
+package:
+  excludeDevDependencies: true
+
+custom:
+  serverless-offline:
+    noStripTrailingSlashInUrl: false
+    httpPort: 8000
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true
+  prune:
+    automatic: true
+    number: 0
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-prune-plugin
+
+provider:
+  name: aws
+  versionFunctions: false
+  runtime: nodejs16.x
+
+functions:
+  build:
+    handler: src/serverless.handler
+    timeout: 30
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
+    environment:
+      STAGE: ""

@@ -1,0 +1,31 @@
+{
+  "extends": "@tablecheck/scripts/tsconfig/base.json",
+  "exclude": ["node_modules"],
+  "files": [
+    "/Users/daniellizik/source/tc/projects/ssg-takehome/.@tablecheck/definitions.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/*.ts",
+    "src/*.tsx",
+    "src/**/*.json",
+    "src/*.json",
+    "cypress/**/*.ts",
+    "cypress/**/*.tsx",
+    "cypress/*.ts",
+    "cypress/*.tsx",
+    "cypress/**/*.json",
+    "cypress/*.json"
+  ],
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "target": "es5",
+    "baseUrl": "src",
+    "noEmit": true,
+    "paths": { "#cypress/*": ["../cypress/*"] },
+    "isolatedModules": false,
+    "types": ["cypress", "node"]
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+jspm_packages
+/cache
+/pages
+.build
+/junit
+/coverage
+.@tablecheck
