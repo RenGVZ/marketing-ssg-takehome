@@ -3,7 +3,7 @@ import { renderToString } from "react-dom/server";
 
 import { EmotionCacheProvider, cache, emotionServer } from "./emotion";
 import * as favicons from "./favicons";
-import { Props as BlogProps } from "../pages/BlogPost";
+import { BlogProps } from "../types";
 
 export function buildHtml(content: React.ReactNode) {
   const { props } = content as React.ReactElement<BlogProps>;

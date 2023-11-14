@@ -21,7 +21,7 @@ class Block {
     } else if (type === "CAROUSEL") {
       this.content = JSON.stringify(
         new Array(10).fill(null).map((_, id) => {
-          return { id: id, src: faker.image.urlLoremFlickr() }
+          return { id, src: faker.image.urlLoremFlickr() }
         })
       );
     } else {

@@ -1,5 +1,7 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
+import { CarouselSlideType } from "../types"
+import { useCarousel } from "../hooks/useCarousel"
 
 const CarouselWrapper = styled.div`
   margin: 20px;
@@ -34,36 +36,28 @@ const CarouselWrapper = styled.div`
   }
 `
 
-type ImageType = {
-  id: number
-  src: string
-}
-
 export function Carousel({ content }: { content: string }) {
-  const images: ImageType[] = JSON.parse(content).map((image: string) => image)
-
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  const handlePrev = () => {
-    return activeIndex === 0
-      ? setActiveIndex(images.length - 1)
-      : setActiveIndex(activeIndex - 1)
+  let slides: CarouselSlideType[] = []
+  try {
+    slides = JSON.parse(content)
+  } catch (error) {
+    console.error("Invalid content prop:", error)
   }
 
-  const handleNext = () => {
-    return activeIndex === images.length - 1
-      ? setActiveIndex(0)
-      : setActiveIndex(activeIndex + 1)
+  if (!slides.length) {
+    return null
   }
+
+  const { activeSlide, handlePrev, handleNext } = useCarousel(slides)
 
   return (
     <CarouselWrapper>
       <div className="slides">
-        {images.map((image: ImageType) => (
+        {slides.map((slide: CarouselSlideType) => (
           <img
-            className={`slide ${activeIndex !== image.id ? "inactive" : ""}`}
-            src={image.src}
-            key={image.id}
+            className={`slide ${activeSlide.id !== slide.id ? "inactive" : ""}`}
+            src={slide.src}
+            key={slide.id}
           />
         ))}
       </div>

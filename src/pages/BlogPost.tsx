@@ -1,23 +1,8 @@
 import styled from "@emotion/styled";
+import { cache, EmotionCacheProvider } from "../utils/emotion"
+import { BlogProps } from "types";
 
 import { components } from "../components";
-
-type BlockType = "PARAGRAPH" | "HEADER" | "BLOCKQUOTE" | "IMAGE" | "CAROUSEL"
-
-type Block = {
-  id: string;
-  type: BlockType;
-  content: string;
-};
-
-export type Props = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  hero_image: string;
-  blocks: Block[];
-};
 
 const Wrapper = styled.article`
   max-width: 600px;
@@ -95,45 +80,47 @@ const Wrapper = styled.article`
   }
 `;
 
-export function BlogPost(props: Props) {
+export function BlogPost(props: BlogProps) {
   return (
-    <Wrapper>
-      <header>
-        <button id="inquiry">send inquiry</button>
-      </header>
-      <section>
-        <h1>{props.title}</h1>
-        <p>{props.description}</p>
-        <img src={props.hero_image} />
-      </section>
+    <EmotionCacheProvider value={cache}>
+      <Wrapper>
+        <header>
+          <button id="inquiry">send inquiry</button>
+        </header>
+        <section>
+          <h1>{props.title}</h1>
+          <p>{props.description}</p>
+          <img src={props.hero_image} />
+        </section>
 
-      <div>
-        {props.blocks.map((block) => {
-          const Component = components[block.type];
+        <div>
+          {props.blocks.map((block) => {
+            const Component = components[block.type];
 
-          return <Component key={block.id} content={block.content} />;
-        })}
-      </div>
+            return <Component key={block.id} content={block.content} />;
+          })}
+        </div>
 
-      <dialog>
-        <form>
-          <fieldset>
-            <label htmlFor="name">name</label>
-            <input type="name" id="name" />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="message">Message</label>
-            <textarea id="message" />
-          </fieldset>
-          <button type="submit">Send</button>
-        </form>
+        <dialog>
+          <form>
+            <fieldset>
+              <label htmlFor="name">name</label>
+              <input type="name" id="name" />
+            </fieldset>
+            <fieldset>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" />
+            </fieldset>
+            <fieldset>
+              <label htmlFor="message">Message</label>
+              <textarea id="message" />
+            </fieldset>
+            <button type="submit">Send</button>
+          </form>
 
-        <button>close</button>
-      </dialog>
-    </Wrapper>
+          <button>close</button>
+        </dialog>
+      </Wrapper>
+    </EmotionCacheProvider>
   );
 }

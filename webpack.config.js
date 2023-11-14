@@ -1,6 +1,6 @@
 const path = require("path");
 
-const CopyPlugin = require("copy-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 const slsw = require("serverless-webpack");
 const webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");

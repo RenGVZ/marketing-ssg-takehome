@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom"
-import App from "./App"
-import { Props as BlogProps } from "./pages/BlogPost"
+import { BlogProps } from "./types"
+import { BlogPost } from "./pages/BlogPost"
 
 declare global {
   interface Window {
@@ -10,7 +10,7 @@ declare global {
 
 if (typeof window !== "undefined") {
   ReactDOM.hydrate(
-    <App {...window.__BLOG_PROPS__} />,
+    <BlogPost {...window.__BLOG_PROPS__} />,
     document.getElementById("root")
   )
 }
