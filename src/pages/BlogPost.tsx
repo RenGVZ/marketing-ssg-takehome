@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { components } from "../components";
 
-type BlockType = "PARAGRAPH" | "HEADER" | "BLOCKQUOTE" | "IMAGE";
+type BlockType = "PARAGRAPH" | "HEADER" | "BLOCKQUOTE" | "IMAGE" | "CAROUSEL"
 
 type Block = {
   id: string;

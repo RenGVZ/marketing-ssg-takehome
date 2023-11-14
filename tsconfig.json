@@ -2,7 +2,7 @@
   "extends": "@tablecheck/scripts/tsconfig/base.json",
   "exclude": ["node_modules"],
   "files": [
-    "/Users/gavinrene/Code/marketing-ssg-takehome/.@tablecheck/definitions.d.ts"
+    "/Users/gavinrene/sandbox/marketing-ssg-takehome/.@tablecheck/definitions.d.ts"
   ],
   "include": [
     "src/**/*.ts",

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-type BlockType = "PARAGRAPH" | "HEADER" | "BLOCKQUOTE" | "IMAGE";
+type BlockType = "PARAGRAPH" | "HEADER" | "BLOCKQUOTE" | "IMAGE" | "CAROUSEL";
 
 class Block {
   id: string;
@@ -18,6 +18,12 @@ class Block {
       this.content = faker.lorem.paragraph();
     } else if (type === "IMAGE") {
       this.content = "https://cataas.com/cat";
+    } else if (type === "CAROUSEL") {
+      this.content = JSON.stringify(
+        new Array(10).fill(null).map((_, id) => {
+          return { id: id, src: faker.image.urlLoremFlickr() }
+        })
+      );
     } else {
       this.content = "";
     }
@@ -50,6 +56,7 @@ export class BlogPost {
                 "HEADER",
                 "BLOCKQUOTE",
                 "IMAGE",
+                "CAROUSEL",
               ])
             )
         ),

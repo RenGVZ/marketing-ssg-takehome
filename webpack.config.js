@@ -41,8 +41,8 @@ module.exports = {
         process.env.NODE_CONFIG_ENV
       ),
     }),
-    new CopyPlugin({
-      patterns: [{ from: "src/public", to: "public" }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: "public", to: "public" }],
+    // }),
   ],
 };

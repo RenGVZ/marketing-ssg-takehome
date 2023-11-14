@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:cms": "npx tsx watch cms/index.ts",
-    "start:website": "serverless offline start --noPrependStageInUrl -s dev"
+    "start:website": "npm run client:build && serverless offline start --noPrependStageInUrl -s dev",
+    "client:build": "webpack --config webpack.config.client.js"
   },
   "keywords": [],
   "author": "",
@@ -45,6 +46,7 @@
     "tsx": "3.14.0",
     "typescript": "5.1.3",
     "webpack": "4.46.0",
+    "webpack-cli": "^4.9.0",
     "webpack-node-externals": "3.0.0"
   }
 }
